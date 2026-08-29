@@ -25,7 +25,7 @@ jobs:
   # receiving the OpenAI secret.
   pull-request-performance:
     if: github.event_name == 'pull_request'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@4c4ded05bb7589213dc13b079d29e722f02b3681
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@820abbaf5472c1efb7546fe17f47015d249fa397
     with:
       project-path: .
       profile: main_scene
@@ -41,7 +41,7 @@ jobs:
   # Manual runs may use the secret for an optional explanation.
   manual-performance:
     if: github.event_name == 'workflow_dispatch'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@4c4ded05bb7589213dc13b079d29e722f02b3681
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@820abbaf5472c1efb7546fe17f47015d249fa397
     with:
       project-path: .
       profile: main_scene
