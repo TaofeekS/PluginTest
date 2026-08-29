@@ -21,37 +21,38 @@ permissions:
   contents: read
 
 jobs:
-  # Pull requests run deterministic validation and budgets without
-  # receiving the OpenAI secret.
+  # Pull requests compare the candidate against the protected base.
   pull-request-performance:
     if: github.event_name == 'pull_request'
     uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@915dac1ca8d7cd8f8e6d9afbc4ec1792e409d95a
     with:
       project-path: .
       profile: main_scene
-      budget-file: performance_budgets.json
+      budget-file: budgets/comparison_budgets.json
       godot-version: "4.5.1"
       use-dotnet: false
       warmup-frames: 120
       measured-frames: 600
       sampling-interval: 1
       capture-runs: 3
+      compare-with-base: true
       investigate: never
 
-  # Manual runs may use the secret for an optional explanation.
+  # Manual runs remain absolute-only and may optionally use AI.
   manual-performance:
     if: github.event_name == 'workflow_dispatch'
     uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@915dac1ca8d7cd8f8e6d9afbc4ec1792e409d95a
     with:
       project-path: .
       profile: main_scene
-      budget-file: performance_budgets.json
+      budget-file: budgets/comparison_budgets.json
       godot-version: "4.5.1"
       use-dotnet: false
       warmup-frames: 120
       measured-frames: 600
       sampling-interval: 1
       capture-runs: 3
+      compare-with-base: false
       investigate: ${{ inputs.investigate }}
       openai-model: gpt-4.1-mini
     secrets:
