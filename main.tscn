@@ -38,7 +38,7 @@ text = "VISUAL PERFORMANCE TEST"
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "FPS: 0
-Objects: 0 / 2,000"
+Objects: 0 / 25,000"
 
 [node name="State" type="Label" parent="HUD/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -48,8 +48,8 @@ text = "RUNNING"
 [node name="Controls" type="Label" parent="HUD/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.65, 0.69, 0.78, 1)
-text = "UP / +  Add 500     DOWN / -  Remove 500
-R  Reset to 2,000     SPACE  Pause"
+text = "UP / +  Add 5,000     DOWN / -  Remove 5,000
+R  Reset to 25,000     SPACE  Pause"
 
 [node name="PerformanceBudgetProbe" type="Node" parent="."]
 script = ExtResource("2_0xm2m")
