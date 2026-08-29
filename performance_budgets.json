@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "budgets": [
+    {
+      "id": "main-scene-process-p95",
+      "profile": "main_scene",
+      "metric": "median_p95_process_time",
+      "maximum": 2.0,
+      "unit": "ms",
+      "description": "Main scene process p95 must remain within its calibrated limit."
+    },
+    {
+      "id": "main-scene-peak-nodes",
+      "profile": "main_scene",
+      "metric": "median_peak_node_count",
+      "maximum": 100,
+      "unit": "nodes",
+      "description": "Main scene node count must remain within its calibrated limit."
+    }
+  ]
+}

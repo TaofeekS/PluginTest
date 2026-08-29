@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv6drsilb4l3u"]
+
+[ext_resource type="Script" path="res://scripts/performance_visual.gd" id="1_controller"]
+[ext_resource type="Script" uid="uid://3ycomulg8qj3" path="res://addons/performance_budget_guardian/performance_probe.gd" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_controller")
+
+[node name="ObjectContainer" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+offset_right = 320.0
+offset_bottom = 170.0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="HUD/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.82, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "VISUAL PERFORMANCE TEST"
+
+[node name="Stats" type="Label" parent="HUD/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "FPS: 0
+Objects: 0 / 2,000"
+
+[node name="State" type="Label" parent="HUD/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.43, 0.91, 0.66, 1)
+text = "RUNNING"
+
+[node name="Controls" type="Label" parent="HUD/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.69, 0.78, 1)
+text = "UP / +  Add 500     DOWN / -  Remove 500
+R  Reset to 2,000     SPACE  Pause"
+
+[node name="PerformanceBudgetProbe" type="Node" parent="."]
+script = ExtResource("2_0xm2m")
+metadata/_custom_type_script = "uid://3ycomulg8qj3"
