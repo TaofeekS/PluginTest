@@ -25,7 +25,7 @@ jobs:
   # receiving the OpenAI secret.
   pull-request-performance:
     if: github.event_name == 'pull_request'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@580606bcf603bb0279d90a957c6498947d366182
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@4c4ded05bb7589213dc13b079d29e722f02b3681
     with:
       project-path: .
       profile: main_scene
