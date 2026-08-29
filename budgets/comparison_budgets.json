@@ -1,0 +1,23 @@
+{
+  "schema_version": 3,
+  "budgets": [
+    {
+      "id": "main-scene-process-p95",
+      "profile": "main_scene",
+      "metric": "median_p95_process_time",
+      "maximum": 2.0,
+      "maximum_increase_percent": 20,
+      "unit": "ms",
+      "description": "Process p95 must pass the absolute limit and remain within 20 percent of the protected baseline."
+    },
+    {
+      "id": "main-scene-peak-nodes",
+      "profile": "main_scene",
+      "metric": "median_peak_node_count",
+      "maximum": 100,
+      "maximum_increase_percent": 0,
+      "unit": "nodes",
+      "description": "Peak node count must pass the absolute limit and must not increase from the protected baseline."
+    }
+  ]
+}
