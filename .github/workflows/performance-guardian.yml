@@ -36,7 +36,7 @@ jobs:
       sampling-interval: 1
       capture-runs: 3
       compare-with-base: true
-      investigate: never
+      investigate: always
 
   # Manual runs remain absolute-only and may optionally use AI.
   manual-performance:
