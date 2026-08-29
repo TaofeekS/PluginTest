@@ -21,15 +21,15 @@ permissions:
   contents: read
 
 jobs:
-  # Pull requests run deterministic validation and budgets without receiving
-  # the OpenAI secret.
+  # Pull requests run deterministic validation and budgets without
+  # receiving the OpenAI secret.
   pull-request-performance:
     if: github.event_name == 'pull_request'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@58cdb49101036548d2c05c59401ef804981bb44b
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@580606bcf603bb0279d90a957c6498947d366182
     with:
       project-path: .
       profile: main_scene
-      budget-file: budgets/performance_budgets.json
+      budget-file: performance_budgets.json
       godot-version: "4.5.1"
       use-dotnet: false
       warmup-frames: 120
@@ -41,11 +41,11 @@ jobs:
   # Manual runs may use the secret for an optional explanation.
   manual-performance:
     if: github.event_name == 'workflow_dispatch'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@58cdb49101036548d2c05c59401ef804981bb44b
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@580606bcf603bb0279d90a957c6498947d366182
     with:
       project-path: .
       profile: main_scene
-      budget-file: budgets/performance_budgets.json
+      budget-file: performance_budgets.json
       godot-version: "4.5.1"
       use-dotnet: false
       warmup-frames: 120
