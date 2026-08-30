@@ -7,8 +7,16 @@ on:
 
   workflow_dispatch:
     inputs:
+      mode:
+        description: "Run policy enforcement or generate a calibration proposal"
+        required: true
+        default: enforce
+        type: choice
+        options:
+          - enforce
+          - calibrate
       investigate:
-        description: "Optional AI investigation mode"
+        description: "Optional AI investigation mode for enforcement only"
         required: true
         default: on-failure
         type: choice
@@ -21,10 +29,10 @@ permissions:
   contents: read
 
 jobs:
-  # Pull requests compare the candidate against the protected base.
+  # Pull requests remain deterministic-only and use committed policy.
   pull-request-performance:
     if: github.event_name == 'pull_request'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@7622997bd3a9c5d166703e578af943b7e25f61ba
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@a1d0cfd02cffbc626884454cdcd4341dd1c2bd24
     with:
       project-path: .
       scene-path: res://main.tscn
@@ -39,11 +47,12 @@ jobs:
       compare-with-base: false
       investigate: never
 
-  # Manual runs remain absolute-only and may optionally use AI.
-  manual-performance:
-    if: github.event_name == 'workflow_dispatch'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@7622997bd3a9c5d166703e578af943b7e25f61ba
+  # Manual enforcement may optionally receive the AI secret.
+  manual-enforcement:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'enforce'
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@a1d0cfd02cffbc626884454cdcd4341dd1c2bd24
     with:
+      mode: enforce
       project-path: .
       scene-path: res://main.tscn
       profile: main_scene
@@ -59,3 +68,21 @@ jobs:
       openai-model: gpt-4.1-mini
     secrets:
       openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+  # Manual calibration creates a proposal only and receives no AI secret.
+  manual-calibration:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'calibrate'
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@a1d0cfd02cffbc626884454cdcd4341dd1c2bd24
+    with:
+      mode: calibrate
+      project-path: .
+      scene-path: res://main.tscn
+      profile: main_scene
+      godot-version: "4.5.1"
+      use-dotnet: false
+      warmup-frames: 120
+      measured-frames: 600
+      sampling-interval: 1
+      calibration-runs: 5
+      compare-with-base: false
+      investigate: never
