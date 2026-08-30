@@ -1,4 +1,3 @@
-class_name PerformanceShape
 extends Node2D
 
 enum ShapeKind {

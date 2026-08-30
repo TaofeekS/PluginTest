@@ -24,7 +24,7 @@ var _hud_elapsed := HUD_REFRESH_INTERVAL
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	object_container.process_mode = Node.PROCESS_MODE_PAUSABLE
-	_rng.randomize()
+	_rng.seed = 1337
 	RenderingServer.set_default_clear_color(Color("090d18"))
 	_update_movement_bounds()
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
@@ -69,7 +69,7 @@ func _reconcile_population() -> void:
 		for child in object_container.get_children():
 			if amount_to_retire <= 0:
 				break
-			var shape := child as PerformanceShape
+			var shape: Variant = child
 			if shape != null and not shape.is_retiring():
 				shape.retire()
 				amount_to_retire -= 1
@@ -78,14 +78,14 @@ func _reconcile_population() -> void:
 func _active_shape_count() -> int:
 	var active_count := 0
 	for child in object_container.get_children():
-		var shape := child as PerformanceShape
+		var shape: Variant = child
 		if shape != null and not shape.is_retiring():
 			active_count += 1
 	return active_count
 
 
 func _spawn_shape() -> void:
-	var shape := PerformanceShapeScript.new() as PerformanceShape
+	var shape: Variant = PerformanceShapeScript.new()
 	object_container.add_child(shape)
 	shape.configure(_movement_bounds, _rng, _ordered_range(size_range), _ordered_range(speed_range), _ordered_lifetime_range())
 
@@ -104,7 +104,7 @@ func _ordered_lifetime_range() -> Vector2:
 func _on_viewport_size_changed() -> void:
 	_update_movement_bounds()
 	for child in object_container.get_children():
-		var shape := child as PerformanceShape
+		var shape: Variant = child
 		if shape != null:
 			shape.set_movement_bounds(_movement_bounds)
 
