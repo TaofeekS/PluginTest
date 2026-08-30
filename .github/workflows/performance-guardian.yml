@@ -32,7 +32,7 @@ jobs:
   # Pull requests remain deterministic-only and use committed policy.
   pull-request-performance:
     if: github.event_name == 'pull_request'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@a1d0cfd02cffbc626884454cdcd4341dd1c2bd24
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@ea6a5df84efa0c5eabe05477ac1720259e7323fa
     with:
       project-path: .
       scene-path: res://main.tscn
@@ -50,7 +50,7 @@ jobs:
   # Manual enforcement may optionally receive the AI secret.
   manual-enforcement:
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'enforce'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@a1d0cfd02cffbc626884454cdcd4341dd1c2bd24
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@ea6a5df84efa0c5eabe05477ac1720259e7323fa
     with:
       mode: enforce
       project-path: .
@@ -72,7 +72,7 @@ jobs:
   # Manual calibration creates a proposal only and receives no AI secret.
   manual-calibration:
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'calibrate'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@a1d0cfd02cffbc626884454cdcd4341dd1c2bd24
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@ea6a5df84efa0c5eabe05477ac1720259e7323fa
     with:
       mode: calibrate
       project-path: .
