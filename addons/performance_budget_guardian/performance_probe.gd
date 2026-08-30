@@ -3,7 +3,7 @@ extends Node
 const RESULT_TYPE := "performance_budget_guardian_capture"
 const SCHEMA_VERSION := 1
 const ADDON_NAME := "Performance Budget Guardian"
-const ADDON_VERSION := "1.1.0"
+const ADDON_VERSION := "1.2.0"
 const MEMORY_STORAGE_LIMITATION := "Because the probe accumulates raw samples during capture, static-memory growth includes probe storage overhead and cannot by itself prove a project memory leak."
 const PERCENTILE_DEFINITION := "nearest-rank: sort ascending; select one-based rank ceil(p * N), clamped to 1..N"
 

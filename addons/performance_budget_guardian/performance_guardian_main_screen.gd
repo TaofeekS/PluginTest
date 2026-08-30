@@ -23,6 +23,7 @@ var _selected_path := ""
 
 func _ready() -> void:
 	name = "Performance Guardian"
+	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_build_interface()
 	_refresh_timer = Timer.new()
@@ -155,6 +156,8 @@ func _new_tree(columns: Array[String], minimum_height: float) -> Tree:
 	tree.hide_root = true
 	tree.select_mode = Tree.SELECT_ROW
 	tree.custom_minimum_size = Vector2(0, minimum_height)
+	tree.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tree.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	for index in columns.size():
 		tree.set_column_title(index, columns[index])
 	return tree

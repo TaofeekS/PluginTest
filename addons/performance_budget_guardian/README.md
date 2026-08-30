@@ -2,9 +2,9 @@
 
 Copy this directory to `res://addons/performance_budget_guardian/`, enable **Performance Budget Guardian** in Project Settings > Plugins, and add a `PerformanceBudgetProbe` node to the scene to measure. The node also works when its script is attached directly, including headless runs.
 
-Addon `1.1.0` also adds a read-only **Performance Guardian** editor dock. It lists probe readiness for the active scene, recent captures and canonical Guardian/calibration reports, and failed deterministic rules. It never runs captures, Python, budgets, CI, network requests, or AI, and it never calculates a verdict from raw captures.
+Addon `1.2.0` also adds a read-only **Guardian** main-screen workspace beside Godot's 2D, 3D, Script, Game, and AssetLib buttons. Select it to open the central **Performance Guardian** page; switching away restores the normal workspace without occupying the Inspector, Node, or FileSystem docks. It lists probe readiness for the active scene, recent captures and canonical Guardian/calibration reports, and failed deterministic rules. It never runs captures, Python, budgets, CI, network requests, or AI, and it never calculates a verdict from raw captures.
 
-The dock scans configured probe output paths, `res://results`, and `res://.performance-guardian`. **Add evidence** accepts project-contained JSON for the current editor session; **Locate** selects visible evidence in Godot's FileSystem dock and **Copy res:// path** copies its portable path. Downloaded CI evidence must first be extracted or copied beneath the project. Absolute paths, traversal, traversed links, unsupported schemas, malformed JSON, files over 8 MiB, and scans beyond 1,000 JSON files are rejected or reported safely.
+The workspace scans configured probe output paths, `res://results`, and `res://.performance-guardian`. **Add evidence** accepts project-contained JSON for the current editor session; **Locate** selects visible evidence in Godot's FileSystem dock and **Copy res:// path** copies its portable path. Downloaded CI evidence must first be extracted or copied beneath the project. Absolute paths, traversal, traversed links, unsupported schemas, malformed JSON, files over 8 MiB, and scans beyond 1,000 JSON files are rejected or reported safely.
 
 Capture ordering uses only capture schema v1 `ended_at_utc`. Guardian v1/v2 and calibration v1 reports currently have no canonical report timestamp, so they are placed after timestamped captures and sorted by report type and normalized project path. Filesystem creation and modification times are never treated as evidence time. Raw captures are labeled **Not evaluated**; failed rules come only from canonical Guardian reports, and calibration remains **Proposal only—not an enforced verdict**.
 
@@ -14,7 +14,7 @@ Because the probe accumulates raw samples during capture, static-memory growth i
 
 Command-line overrides are `--pbg-profile`, `--pbg-warmup-frames`, `--pbg-measured-frames`, `--pbg-sampling-interval`, `--pbg-output`, `--pbg-run-id`, `--pbg-source-revision`, and `--pbg-auto-quit`. Value-bearing arguments use `--name=value`.
 
-When upgrading the addon, replace the installed addon directory while the plugin is disabled and create a fresh capture with a new run ID. Do not change old capture metadata to claim a newer addon version: result files are evidence of the version that produced them. Historical `1.0.1` captures remain schema-compatible with `1.1.0`; `1.0.0` remains unsupported because it lacks the mandatory probe-storage memory limitation.
+When upgrading the addon, replace the installed addon directory while the plugin is disabled and create a fresh capture with a new run ID. Do not change old capture metadata to claim a newer addon version: result files are evidence of the version that produced them. Historical `1.0.1` and `1.1.0` captures remain schema-compatible with `1.2.0`; `1.0.0` remains unsupported because it lacks the mandatory probe-storage memory limitation.
 
 To remove the addon, remove its probe nodes, disable the plugin, and delete only `res://addons/performance_budget_guardian/`.
 
