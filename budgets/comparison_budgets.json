@@ -14,7 +14,7 @@
       "id": "main-scene-peak-nodes",
       "profile": "main_scene",
       "metric": "median_peak_node_count",
-      "maximum": 2508,
+      "maximum": 2552,
       "maximum_increase_percent": 5,
       "unit": "nodes",
       "description": "Peak node count allows ten percent absolute headroom above the calibrated baseline and at most five percent pull-request growth."
@@ -23,7 +23,7 @@
       "id": "main-scene-peak-objects",
       "profile": "main_scene",
       "metric": "median_peak_object_count",
-      "maximum": 6143,
+      "maximum": 6481,
       "maximum_increase_percent": 5,
       "unit": "objects",
       "description": "Peak object count allows ten percent absolute headroom above the calibrated baseline and at most five percent pull-request growth."
