@@ -24,7 +24,7 @@ jobs:
   # Pull requests compare the candidate against the protected base.
   pull-request-performance:
     if: github.event_name == 'pull_request'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@d9b96e78cd5775b621134afdf40077512931c1c2
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@7622997bd3a9c5d166703e578af943b7e25f61ba
     with:
       project-path: .
       scene-path: res://main.tscn
@@ -42,7 +42,7 @@ jobs:
   # Manual runs remain absolute-only and may optionally use AI.
   manual-performance:
     if: github.event_name == 'workflow_dispatch'
-    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@d9b96e78cd5775b621134afdf40077512931c1c2
+    uses: TaofeekS/godot_performance_guardian/.github/workflows/reusable-performance-guardian.yml@7622997bd3a9c5d166703e578af943b7e25f61ba
     with:
       project-path: .
       scene-path: res://main.tscn
