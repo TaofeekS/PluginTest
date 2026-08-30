@@ -36,8 +36,11 @@ jobs:
       measured-frames: 600
       sampling-interval: 1
       capture-runs: 3
-      compare-with-base: false
-      investigate: never
+      compare-with-base: true
+      investigate: always
+      openai-model: gpt-4.1-mini
+    secrets:
+      openai-api-key: ${{ secrets.OPENAI_API_KEY }}
 
   # Manual runs remain absolute-only and may optionally use AI.
   manual-performance:

@@ -1,13 +1,13 @@
 extends Node2D
 
-const DEFAULT_TARGET_COUNT := 2000
-const LOAD_STEP := 500
-const MAX_TARGET_COUNT := 100000
+const DEFAULT_TARGET_COUNT := 25000
+const LOAD_STEP := 5000
+const MAX_TARGET_COUNT := 250000
 const HUD_REFRESH_INTERVAL := 0.2
 const PerformanceShapeScript := preload("res://scripts/performance_shape.gd")
 
 @export_range(0, MAX_TARGET_COUNT, 1) var target_count := DEFAULT_TARGET_COUNT
-@export_range(1, 10000, 1) var spawn_batch_size := 250
+@export_range(1, 25000, 1) var spawn_batch_size := 2500
 @export var size_range := Vector2(4.0, 16.0)
 @export var speed_range := Vector2(35.0, 150.0)
 @export var lifetime_range := Vector2(1.5, 6.0)
